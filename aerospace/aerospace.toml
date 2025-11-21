@@ -7,6 +7,9 @@ start-at-login = true
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
 
+# Automatically change tiling mode based on the workspace
+automatically-unhide-macos-hidden-apps = true
+
 # Mouse follows focus
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
@@ -14,10 +17,10 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 [gaps]
 inner.horizontal = 15
 inner.vertical =   15
-outer.left =       35
-outer.bottom =     35
-outer.top =        35
-outer.right =      35
+outer.left =       15
+outer.bottom =     15
+outer.top =        15
+outer.right =      15
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -111,3 +114,9 @@ enter = 'mode main'
 # [[on-window-detected]]
 # if.app-id = 'com.google.Chrome'
 # run = 'move-node-to-workspace 1'
+
+# iOS Simulator configuration - force tiling mode
+[[on-window-detected]]
+if.app-id = 'com.apple.iphonesimulator'
+run = ['layout tiling']
+check-further-callbacks = true
