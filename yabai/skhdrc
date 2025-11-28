@@ -15,28 +15,11 @@ alt + shift - k : yabai -m window --swap north
 alt + shift - l : yabai -m window --swap east
 
 # ====== Switch between spaces/workspaces ======
-alt - 1 : yabai -m space --focus 1
-alt - 2 : yabai -m space --focus 2
-alt - 3 : yabai -m space --focus 3
-alt - 4 : yabai -m space --focus 4
-alt - 5 : yabai -m space --focus 5
-alt - 6 : yabai -m space --focus 6
-alt - 7 : yabai -m space --focus 7
-alt - 8 : yabai -m space --focus 8
-alt - 9 : yabai -m space --focus 9
-
-# ====== Move window to workspace ======
-# Note: Without disabling SIP, we use a workaround that simulates macOS native shortcuts
-# This moves the window and follows it to the new space
-alt + shift - 1 : yabai -m window --space 1; yabai -m space --focus 1
-alt + shift - 2 : yabai -m window --space 2; yabai -m space --focus 2
-alt + shift - 3 : yabai -m window --space 3; yabai -m space --focus 3
-alt + shift - 4 : yabai -m window --space 4; yabai -m space --focus 4
-alt + shift - 5 : yabai -m window --space 5; yabai -m space --focus 5
-alt + shift - 6 : yabai -m window --space 6; yabai -m space --focus 6
-alt + shift - 7 : yabai -m window --space 7; yabai -m space --focus 7
-alt + shift - 8 : yabai -m window --space 8; yabai -m space --focus 8
-alt + shift - 9 : yabai -m window --space 9; yabai -m space --focus 9
+# NOTE: Switching spaces requires SIP to be partially disabled.
+# Use macOS native shortcuts instead:
+#   - Ctrl + 1, 2, 3... to switch to space 1, 2, 3...
+#   - Ctrl + Left/Right to move between spaces
+# Enable these in: System Settings → Keyboard → Keyboard Shortcuts → Mission Control
 
 # ====== Layout controls ======
 # Toggle split orientation (horizontal/vertical)
@@ -65,32 +48,11 @@ alt + shift - q : yabai -m window --close
 # Reload yabai configuration
 alt + shift - c : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
 
-# ====== Resize mode ======
-# Enter resize mode with alt-r, then use hjkl to resize
-# Exit with escape or enter
-resize < h : yabai -m window --resize left:-50:0 || yabai -m window --resize right:-50:0
-resize < j : yabai -m window --resize bottom:0:50 || yabai -m window --resize top:0:50
-resize < k : yabai -m window --resize bottom:0:-50 || yabai -m window --resize top:0:-50
-resize < l : yabai -m window --resize right:50:0 || yabai -m window --resize left:50:0
-resize < 0x18 : yabai -m space --balance  # '=' key
-resize < escape : skhd -k "cmd + alt + ctrl - r"  # Exit resize mode
-resize < return : skhd -k "cmd + alt + ctrl - r"  # Exit resize mode
-
-# Toggle resize mode
-alt - r : skhd -k "cmd + alt + ctrl - r"
-cmd + alt + ctrl - r : skhd -m "resize"
-
-# ====== Monitor/Display focus ======
-# Focus different displays (if you have multiple monitors)
-alt + shift - 1 : yabai -m display --focus 1
-alt + shift - 2 : yabai -m display --focus 2
-alt + shift - 3 : yabai -m display --focus 3
-
 # ====== Fast workspace switching (like alt-tab) ======
 # Switch to recent workspace
 alt - tab : yabai -m space --focus recent
 
-# ====== Rotate windows ======
+# ====== Rotate and mirror windows ======
 alt - r : yabai -m space --rotate 90
 
 # ====== Mirror windows ======

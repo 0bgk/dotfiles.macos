@@ -1,6 +1,8 @@
 # Yabai + skhd Configuration
 
-Yabai (window manager) and skhd (hotkey daemon) configuration for macOS, converted from the original AeroSpace configuration.
+Yabai (window manager) and skhd (hotkey daemon) configuration for macOS.
+
+**⚠️ This configuration works WITHOUT disabling SIP (System Integrity Protection).**
 
 ## Installation
 
@@ -36,16 +38,25 @@ yabai --start-service
 skhd --start-service
 ```
 
-## Keybindings (same as AeroSpace)
+## Keybindings
 
 ### Navigation (vim-style)
 - `Alt + h/j/k/l` - Focus windows (left/down/up/right)
-- `Alt + Shift + h/j/k/l` - Move windows
+- `Alt + Shift + h/j/k/l` - Swap windows
 
 ### Spaces/Workspaces
-- `Alt + 1-9` - Switch to space 1-9
-- `Alt + Shift + 1-9` - Move window to space 1-9 (and follow)
-- `Alt + Tab` - Switch to recent space
+**⚠️ Switching between spaces requires SIP to be disabled. Use macOS native shortcuts instead:**
+
+1. Enable in **System Settings → Keyboard → Keyboard Shortcuts → Mission Control**:
+   - ✅ Mission Control
+   - ✅ Move left a space
+   - ✅ Move right a space
+   - ✅ Switch to Desktop 1, 2, 3...
+
+2. Use these shortcuts:
+   - `Ctrl + 1, 2, 3...` - Switch to space 1, 2, 3...
+   - `Ctrl + Left/Right` - Move between spaces
+   - `Ctrl + Up` - Open Mission Control
 
 ### Layouts
 - `Alt + s` - Toggle split orientation (horizontal/vertical)
@@ -56,13 +67,6 @@ skhd --start-service
 ### Window Management
 - `Alt + Shift + q` - Close window
 - `Alt + Shift + c` - Reload yabai configuration
-
-### Resize Mode
-- `Alt + r` - Enter resize mode
-- In resize mode:
-  - `h/j/k/l` - Resize window
-  - `=` - Balance sizes
-  - `Escape` or `Enter` - Exit resize mode
 
 ### Extras
 - `Alt + r` - Rotate windows 90°
@@ -97,17 +101,29 @@ yabai --stop-service
 skhd --stop-service
 ```
 
-## Differences from AeroSpace
+## Configuration Details
 
-- **Gaps**: Configured to 15px as in AeroSpace
+- **Layout**: Binary space partitioning (BSP)
+- **Gaps**: 15px padding and gaps
 - **Mouse follows focus**: Enabled
-- **Opacity**: Inactive windows at 95% opacity
-- **Float apps**: Finder, System Settings, Calculator automatically float
+- **Window opacity**: Active 100%, inactive 95%
+- **Auto-float apps**: Finder, System Settings, Calculator, Activity Monitor
 
-## Note about SIP
+## SIP Limitations
 
-This configuration works **without disabling SIP**. The only limitations are:
-- You can't move windows between spaces with animations (but it works with the current workaround)
-- You can't create/destroy spaces from yabai
+This configuration is designed to work **without disabling SIP (System Integrity Protection)**.
 
-For full functionality, check the [official guide](https://github.com/koekeishiya/yabai/wiki/Disabling-System-Integrity-Protection).
+### What works:
+✅ Window navigation and management
+✅ Tiling and floating layouts
+✅ Window opacity and shadows
+✅ Custom gaps and padding
+
+### What doesn't work (requires SIP disabled):
+❌ Switching between spaces/desktops via yabai commands
+❌ Moving windows between spaces via yabai commands
+❌ Creating/destroying spaces programmatically
+
+**Solution**: Use macOS native keyboard shortcuts for space management (see Keybindings section above).
+
+For full yabai functionality with SIP disabled, check the [official guide](https://github.com/koekeishiya/yabai/wiki/Disabling-System-Integrity-Protection).
