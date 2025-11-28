@@ -2,45 +2,64 @@
 
 Personal macOS configuration files for a minimal tiling window manager setup.
 
-## Setup
+## Overview
 
-This configuration provides a vim-style tiling window manager experience on macOS without disabling SIP.
+This repository provides vim-style tiling window manager configurations for macOS. Choose between two options based on your needs:
 
-### Components
+| Feature | AeroSpace | yabai + skhd |
+|---------|-----------|--------------|
+| **Easy Setup** | ✅ Simple | ⚠️ Requires permissions |
+| **SIP Required** | ❌ No | ❌ No (with limitations) |
+| **Native macOS** | ✅ Yes | ✅ Yes |
+| **Maturity** | 🆕 Newer | 🏆 Established |
+| **Configuration** | TOML | Shell scripts |
+| **Performance** | ⚡ Fast | ⚡ Fast |
 
-- **AeroSpace** - Tiling window manager with vim keybindings
-- **Borders** - Visual borders for active windows
+### Choose Your Window Manager
 
-### Installation
+#### Option A: AeroSpace (Recommended for beginners)
+Modern tiling window manager designed for macOS. Easy to configure with TOML files.
 
-1. Install Homebrew if not already installed:
+👉 [See AeroSpace setup guide](aerospace/README.md)
+
+#### Option B: yabai + skhd (Power users)
+Highly customizable tiling window manager with extensive scripting capabilities.
+
+👉 [See yabai setup guide](yabai/README.md)
+
+## Prerequisites
+
+- macOS 13.0 (Ventura) or later
+- [Homebrew](https://brew.sh/) package manager
+
+Install Homebrew if needed:
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-2. Install AeroSpace:
-```bash
-brew install --cask nikitabobko/tap/aerospace
-```
+## Optional Components
 
-3. Install Borders:
+### Borders
+Visual borders for active windows (works with both window managers):
+
 ```bash
 brew tap FelixKratz/formulae
 brew install borders
 brew services start borders
 ```
 
-4. Copy configuration:
-```bash
-mkdir -p ~/.config/aerospace
-cp aerospace/aerospace.toml ~/.config/aerospace/
-```
+## Quick Start
 
-5. Start AeroSpace (or logout/login)
+1. Choose your window manager (AeroSpace or yabai)
+2. Follow the installation guide in the respective folder
+3. Link the configuration files
+4. Start using your new tiling setup!
 
-## Keybindings
+## Shared Keybindings
 
-### Window Navigation (Vim style)
+Both window managers use the same vim-style keybindings:
+
+### Window Navigation
 - `Alt + h/j/k/l` - Focus left/down/up/right
 - `Alt + Shift + h/j/k/l` - Move window left/down/up/right
 
@@ -56,7 +75,7 @@ cp aerospace/aerospace.toml ~/.config/aerospace/
 
 ### Resize Mode
 - `Alt + r` - Enter resize mode
-- `h/j/k/l` - Decrease width / Increase height / Decrease height / Increase width
+- `h/j/k/l` - Resize directions
 - `=` - Balance sizes
 - `Esc` or `Enter` - Exit resize mode
 
@@ -64,6 +83,8 @@ cp aerospace/aerospace.toml ~/.config/aerospace/
 - `Alt + Shift + =` - Balance window sizes
 - `Alt + Shift + c` - Reload configuration
 - `Alt + Shift + q` - Close window
+
+For more detailed keybindings, see the individual configuration files.
 
 ## License
 
